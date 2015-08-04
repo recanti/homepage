@@ -1,0 +1,23 @@
+{
+  "name": "benwilcoxhomepage",
+  "version": "0.0.1",
+  "description": "Ben Wilcox's personal homepage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recanti/homepage.git"
+  },
+  "author": "Ben Wilcox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/recanti/homepage/issues"
+  },
+  "homepage": "https://github.com/recanti/homepage#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4"
+  }
+}
