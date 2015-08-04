@@ -1,10 +1,16 @@
 'use strict'
 
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var compass = require('gulp-compass');
 
-gulp.task('sass', function () {
-	gulp.src('./scss/**/*.scss')
-		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('./build/css'));
+gulp.task('compass', function () {
+	return gulp.src('./scss/**/*.scss')
+		.pipe(compass({
+			css: 'build/css',
+			sass: 'scss',
+			require: ['susy']
+		}))
+		.on('error', function(err) {
+			return;
+		});
 });
