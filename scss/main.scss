@@ -1,7 +1,12 @@
 @import "variables/fonts";
+@import "defaults/defaults";
 @import "susy";
 
-$susy: (
+/*$susy: (
 	columns: 6,
 	gutters: 0
 );
+
+.span {
+	width: span(6);
+}*/
