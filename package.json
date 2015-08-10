@@ -19,6 +19,7 @@
   "devDependencies": {
     "browser-sync": "^2.8.2",
     "gulp": "^3.9.0",
-    "gulp-compass": "^2.1.0"
+    "gulp-compass": "^2.1.0",
+    "gulp-plumber": "^1.0.1"
   }
 }

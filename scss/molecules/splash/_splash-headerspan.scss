@@ -1,0 +1,26 @@
+.splash__header {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.splash__headerspan {
+	font-family: $UbuntuMedium;
+	font-weight: bold;
+	font-size: 48px;
+	display: block;
+	text-align: center;
+
+	@media (min-width: 1000px) {
+		display: inline;
+	}
+}
+
+.splash__headerspan--yellow {
+	@extend .splash__headerspan;
+	color: $yellow;
+}
+
+.splash__headerspan--green {
+	@extend .splash__headerspan;
+	color: $green;
+}

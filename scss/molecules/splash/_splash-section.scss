@@ -1,3 +1,11 @@
 .splash__section {
 	height: 480px; 
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	@media (min-width: 768px) {
+		height: 768px;
+	}
 }

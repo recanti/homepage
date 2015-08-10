@@ -1,6 +1,7 @@
 'use strict'
 
 var gulp = require('gulp');
+var plumber = require('gulp-plumber');
 var browsersync = require('browser-sync').create();
 var compass = require('gulp-compass');
 
@@ -15,6 +16,7 @@ gulp.task('compass', function () {
 		}))
 		.on('error', function(err) {
 			console.log(err);
+			this.emit('end');
 		})
 		.pipe(browsersync.stream());
 });
@@ -25,6 +27,7 @@ gulp.task('html', function() {
 		.pipe(gulp.dest('build'))
 		.on('error', function(err) {
 			console.log(err);
+			this.emit('end');
 		});
 });
 
@@ -34,6 +37,7 @@ gulp.task('resources', function() {
 		.pipe(gulp.dest('build/resources'))
 		.on('error', function(err) {
 			console.log(err);
+			this.emit('end');
 		});
 })
 
