@@ -4,6 +4,10 @@ var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var browsersync = require('browser-sync').create();
 var compass = require('gulp-compass');
+var svgstore = require('gulp-svgstore');
+var svgmin = require('gulp-svgmin');
+var inject = require('gulp-inject');
+var jsmin = require('gulp-jsmin');
 
 // this will compile sass files to css and move them to the build folder
 // afterwards, call browsersync
@@ -31,6 +35,44 @@ gulp.task('html', function() {
 		});
 });
 
+// this task will compress svgs into one file and inject them into the page
+gulp.task('svgstore', function() {
+
+	var svgs = gulp
+		.src('resources/images/*.svg')
+		.pipe(svgmin())
+		.pipe(svgstore({ inlineSvg: true }));
+
+	function fileContents(filePath, file) {
+		return file.contents.toString();
+	}
+
+	return gulp.src(["index.html"])
+		.pipe(inject(svgs, {transform: fileContents}))
+		.pipe(gulp.dest('build'))
+		.on('error', function(err) {
+			this.emit('end');
+		});
+});
+
+
+gulp.task('reload', function() {
+	browsersync.init({
+		server: "./build/"
+	});
+});
+
+gulp.task('js', function() {
+
+	return gulp.src(["./js/**/*.js"])
+		.pipe(jsmin())
+		.pipe(gulp.dest('build/js'))
+		.on('error', function(err) {
+			console.log(err);
+			this.emit('end');
+		});;
+});
+
 // this will copy the resources folder whenever there is a change
 gulp.task('resources', function() {
 	return gulp.src(['./resources/**/*.*'])
@@ -50,7 +92,9 @@ gulp.task('watch', function() {
 
 	gulp.watch('scss/**/*.scss', ['compass']);
 	gulp.watch('resources/**/*.*', ['resources']);
-	gulp.watch('*.html', ['html']).on('change', browsersync.reload);
+	gulp.watch('js/**/*.js', ['js']).on('change', browsersync.reload);
+	gulp.watch('resources/images/*.svg', ["svgstore"]);
+	gulp.watch('*.html', ['svgstore']).on('change', browsersync.reload);
 });
 
-gulp.task('default', ['compass', 'watch']);
+gulp.task('default', ['compass', 'svgstore', 'js', 'resources'], browsersync.reload);

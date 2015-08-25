@@ -1,0 +1,12 @@
+.section__headerimage {
+	display: block;
+	margin: 0 auto;
+}
+
+.section__headerimage--circle {
+	@extend .section__headerimage;
+	max-width: 300px;
+	height: auto;
+	border-radius: 150px;
+	border: 5px solid $white;
+}

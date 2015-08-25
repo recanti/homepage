@@ -1,26 +1,66 @@
 .splash__header {
 	text-align: center;
-	margin: 0 auto;
+	margin: 0 auto;		
+
 }
 
 .splash__headerspan {
 	font-family: $UbuntuMedium;
 	font-weight: bold;
-	font-size: 48px;
+	font-size: 38px;
+	text-align: center;		
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+
+	@media (min-width: 1000px) {
+		display: inline;
+	}
+
+	@media (min-width: 768px) {
+		font-size: 48px;
+	}
+}
+
+.splash__headerspan--yellow {
+	@extend .splash__headerspan;
 	display: block;
-	text-align: center;
+	color: $yellow;
+	text-decoration: none;
+
+	@media (min-width: 1000px) {
+		display: inline;
+	}
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.splash__headerspan--yellow a {
+	color: $yellow;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.splash__headerspan--green {
+	@extend .splash__headerspan;
+	display: block;
+	color: $green;
+	text-decoration: none;
 
 	@media (min-width: 1000px) {
 		display: inline;
 	}
 }
 
-.splash__headerspan--yellow {
-	@extend .splash__headerspan;
-	color: $yellow;
-}
-
-.splash__headerspan--green {
-	@extend .splash__headerspan;
+.splash__headerspan--green a {
 	color: $green;
+	&:hover {
+		text-decoration: none;
+	}
 }

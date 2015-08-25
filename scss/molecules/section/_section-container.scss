@@ -1,0 +1,12 @@
+.section__container {
+	padding: 40px;
+	@media (min-width: 768px) {
+		padding: 80px;
+	}
+}
+
+.section__container--green {
+	@extend .section__container;
+	background-color: $green;
+	color: $white;
+}

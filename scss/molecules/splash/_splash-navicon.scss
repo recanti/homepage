@@ -1,0 +1,20 @@
+.splash__navicon {
+	height: 30px;
+	width: 30px;
+	margin: 0 5px 0 5px;
+
+	color: $black;
+
+	&:hover {
+		color: $yellow;
+		transition: color .1s ease-out;
+	}
+}
+
+@media (min-width: 768px) {
+	.splash__navicon {
+		height: 60px;
+		width: 60px;
+		margin: 0 10px 0 10px;
+	}
+}
